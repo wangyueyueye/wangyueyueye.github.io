@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.wangyueyueye.yuezhiyin",
+      "sha256_cert_fingerprints": [
+        "A8:66:98:90:78:1B:9D:0F:8A:7B:56:E3:6C:90:35:A2:D9:37:6A:27:E9:C6:C2:82:80:88:52:38:2B:3D:C6:2A"
+      ]
+    }
+  }
+]
