@@ -1,0 +1,36 @@
+{
+  "packageId": "com.wangyueyueye.yuezhiyin",
+  "host": "wangyueyueye.github.io",
+  "name": "月之音",
+  "launcherName": "月之音",
+  "display": "standalone",
+  "themeColor": "#07060b",
+  "themeColorDark": "#07060b",
+  "navigationColor": "#07060b",
+  "navigationColorDark": "#07060b",
+  "backgroundColor": "#000000",
+  "startUrl": "/",
+  "iconUrl": "https://wangyueyueye.github.io/icons/icon-512.png",
+  "maskableIconUrl": "https://wangyueyueye.github.io/icons/icon-512.png",
+  "webManifestUrl": "https://wangyueyueye.github.io/manifest.json",
+  "appVersion": "2.4.0",
+  "appVersionCode": 240,
+  "signingKey": {
+    "path": "./yuezhiyin.keystore",
+    "alias": "yuezhiyin"
+  },
+  "fingerprints": [
+    {
+      "name": "release",
+      "value": "A8:66:98:90:78:1B:9D:0F:8A:7B:56:E3:6C:90:35:A2:D9:37:6A:27:E9:C6:C2:82:80:88:52:38:2B:3D:C6:2A"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "features": {},
+  "enableNotifications": false,
+  "enableSiteSettingsShortcut": false,
+  "fallbackType": "customtabs",
+  "orientation": "portrait",
+  "splashScreenFadeOutDuration": 300,
+  "minSdkVersion": 23
+}
