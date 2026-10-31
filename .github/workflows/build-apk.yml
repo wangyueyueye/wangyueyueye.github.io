@@ -1,4 +1,4 @@
-name: Build 月之音 APK
+﻿name: Build 月之音 APK
 
 on:
   push:
@@ -53,13 +53,27 @@ jobs:
         run: |
           set -e
           SDK_ROOT="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          BWRAP_SDK="$RUNNER_TEMP/bwrap-sdk"
+          mkdir -p "$BWRAP_SDK"
+          echo "ANDROID_SDK_ROOT=$BWRAP_SDK" >> "$GITHUB_ENV"
+          echo "ANDROID_HOME=$BWRAP_SDK" >> "$GITHUB_ENV"
           echo "SDK_ROOT=$SDK_ROOT" >> "$GITHUB_ENV"
+          echo "BWRAP_SDK=$BWRAP_SDK" >> "$GITHUB_ENV"
           mkdir -p "$HOME/.bubblewrap"
-          printf '{"jdkPath":"%s","androidSdkPath":"%s"}\n' "$JAVA_HOME" "$SDK_ROOT" > "$HOME/.bubblewrap/config.json"
+          printf '{"jdkPath":"%s","androidSdkPath":"%s"}\n' "$JAVA_HOME" "$BWRAP_SDK" > "$HOME/.bubblewrap/config.json"
           if [ -x "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" ]; then
             yes | "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
-            "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-35" "build-tools;35.0.0" >/dev/null
+            "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-35" "build-tools;36.1.0" >/dev/null
+          else
+            echo "sdkmanager not found" >&2
+            exit 1
           fi
+          ln -sfn "$SDK_ROOT/cmdline-tools/latest/bin" "$BWRAP_SDK/bin"
+          ln -sfn "$SDK_ROOT/build-tools" "$BWRAP_SDK/build-tools"
+          ln -sfn "$SDK_ROOT/platforms" "$BWRAP_SDK/platforms"
+          ln -sfn "$SDK_ROOT/platform-tools" "$BWRAP_SDK/platform-tools"
+          ln -sfn "$SDK_ROOT/licenses" "$BWRAP_SDK/licenses"
+          ls -la "$BWRAP_SDK"
 
       - name: Prepare signing key and TWA project
         shell: bash
@@ -96,3 +110,4 @@ jobs:
           name: yuezhiyin-aab
           path: android/app-release-bundle.aab
           if-no-files-found: ignore
+
