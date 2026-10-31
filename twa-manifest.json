@@ -1,4 +1,4 @@
-{
+﻿{
   "packageId": "com.wangyueyueye.yuezhiyin",
   "host": "wangyueyueye.github.io",
   "name": "月之音",
@@ -14,7 +14,7 @@
   "maskableIconUrl": "https://wangyueyueye.github.io/icons/icon-512.png",
   "webManifestUrl": "https://wangyueyueye.github.io/manifest.json",
   "appVersion": "2.4.0",
-  "appVersionCode": 240,
+  "appVersionCode": 241,
   "signingKey": {
     "path": "./yuezhiyin.keystore",
     "alias": "yuezhiyin"
@@ -32,5 +32,6 @@
   "fallbackType": "customtabs",
   "orientation": "portrait",
   "splashScreenFadeOutDuration": 300,
-  "minSdkVersion": 23
+  "minSdkVersion": 24
 }
+
